@@ -1,6 +1,4 @@
 read_data <- function(add_date_time=TRUE) {
-#  setAs("character","myDate", function(from) as.Date(from, format="%d/%m/%Y") )
-#  household_power <- read.csv("household_power_consumption.txt", sep=";", stringsAsFactors=FALSE, colClasses=c("myDate", rep("character", 8)))
   household_power <- read.csv("household_power_consumption.txt", sep=";", stringsAsFactors=FALSE)
   household_power <- filter(household_power, Date=='1/2/2007' | Date=='2/2/2007');
   
