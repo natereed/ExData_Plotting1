@@ -46,11 +46,12 @@ plot_sub_metering_vs_date_time <- function(household_power, show_box=TRUE) {
   label_axis_with_days();
   
   if (show_box) {
-    legend("topright", c("Sub-metering 1", "Sub-metering 2", "Sub-metering 3"), lty=c(1,1,1), col=c("black", "red", "blue"))
+    box_type="o";
   }
   else {
-    legend("topright", c("Sub-metering 1", "Sub-metering 2", "Sub-metering 3"), lty=c(1,1,1), col=c("black", "red", "blue"), bty="n");
+    box_type="n";
   }
+  legend("topright", c("Sub-metering 1", "Sub-metering 2", "Sub-metering 3"), lty=c(1,1,1), col=c("black", "red", "blue"), bty=box_type)
 }
 
 # Plot: Voltage vs. Date/Time
