@@ -49,7 +49,7 @@ plot_sub_metering_vs_date_time <- function(household_power, show_box=TRUE) {
     legend("topright", c("Sub-metering 1", "Sub-metering 2", "Sub-metering 3"), lty=c(1,1,1), col=c("black", "red", "blue"))
   }
   else {
-    legend("topright", c("Sub-metering 1", "Sub-metering 2", "Sub-metering 3"), lty=c(1,1,1), col=c("black", "red", "blue"), box.lty="solid", box.lwd="0", box.col="white");
+    legend("topright", c("Sub-metering 1", "Sub-metering 2", "Sub-metering 3"), lty=c(1,1,1), col=c("black", "red", "blue"), bty="n");
   }
 }
 
