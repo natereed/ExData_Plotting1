@@ -1,3 +1,6 @@
+library(dplyr);
+library(lubridate);
+
 read_data <- function(add_date_time=TRUE) {
   household_power <- read.csv("household_power_consumption.txt", sep=";", stringsAsFactors=FALSE)
   household_power <- filter(household_power, Date=='1/2/2007' | Date=='2/2/2007');
@@ -19,12 +22,12 @@ label_axis_with_days <- function() {
 }
 
 # Plot 1: Global Active Power Histogram
-plot_global_active_power_hist <- function() {
+plot_global_active_power_hist <- function(household_power) {
   hist(as.numeric(household_power$Global_active_power), col='RED', xlab='Global Active Power (kilowatts)', main="Global Active Power")
 }
 
 # Plot2: Global Active Power vs. Date/Time
-plot_global_active_power_vs_date_time <- function(show_units=FALSE) {
+plot_global_active_power_vs_date_time <- function(household_power, show_units=FALSE) {
   if (show_units) {
     label = "Global Active Power (kilowatts)"
   } else {
@@ -35,7 +38,7 @@ plot_global_active_power_vs_date_time <- function(show_units=FALSE) {
 }
 
 # Plot 3: Plot Sub-Metering vs. Date/Time
-plot_sub_metering_vs_date_time <- function(show_box=TRUE) {
+plot_sub_metering_vs_date_time <- function(household_power, show_box=TRUE) {
   plot(household_power$date_time, as.numeric(household_power$Sub_metering_1), type="l", xaxt="n", xlab="", ylab="Energy sub metering")
   lines(household_power$date_time, as.numeric(household_power$Sub_metering_2), type="l", col="red")
   lines(household_power$date_time, as.numeric(household_power$Sub_metering_3), type="l", col="blue")
@@ -51,14 +54,14 @@ plot_sub_metering_vs_date_time <- function(show_box=TRUE) {
 }
 
 # Plot: Voltage vs. Date/Time
-plot_voltage_vs_date_time <- function() {
+plot_voltage_vs_date_time <- function(household_power) {
   plot(household_power$date_time, as.numeric(household_power$Voltage), 
        type="l", xaxt="n", xlab="datetime", ylab="Voltage");
   label_axis_with_days();
 }
 
 # Plot: Global Reactive Power vs. Date/Time
-plot_global_reactive_power_vs_date_time <- function() {
+plot_global_reactive_power_vs_date_time <- function(household_power) {
   plot(household_power$date_time, household_power$Global_reactive_power, type="l", xaxt="n", xlab="datetime", ylab="Global_reactive_power");
   label_axis_with_days();
 }
